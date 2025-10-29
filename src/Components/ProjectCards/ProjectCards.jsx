@@ -13,12 +13,12 @@ function ProjectCards({project}) {
           <MdArrowOutward className="text-[1.2rem]"/>
         </button>
       </div>
-      <div className="flex gap-x-7 mt-5">
-        <div className="basis-[60%] p-5 bg-[#fdf7f7] rounded-lg ">
-          <img src={project.thumbnail} alt="thumbnail" className="max-w-140 object-cover mx-auto" />
+      <div className="flex flex-col md:flex-row items-center gap-7 mt-5">
+        <div className="basis-[60%] p-5 bg-[#fdf7f7] rounded-lg w-full">
+          <img src={project.thumbnail} alt="thumbnail" className="max-w-140 object-cover mx-auto w-full" />
         </div>
         <div className="basis-[40%]">
-         <div className="space-y-22"> 
+         <div className="space-y-8 md:space-y-12 xl:space-y-22"> 
            <div className="space-y-5"> 
           <h4 className="font-medium text-[1.2rem]">Project was about precision and information. That’s all!</h4>
           <p className="text-sm text-gray-700 leading-6">
@@ -26,7 +26,7 @@ function ProjectCards({project}) {
             goals through user-friendly, engaging target branding that appeals
             to a website.
           </p>
-          <ul className="flex items-center gap-x-3">
+          <ul className="flex items-center flex-wrap gap-3">
             <li className="py-1 px-5 text-gray-600 bg-gray-100 text-sm font-medium rounded-full">
               Branding
             </li>

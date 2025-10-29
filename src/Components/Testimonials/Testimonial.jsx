@@ -1,7 +1,15 @@
-import { useState } from "react"
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+import { FaUserCircle } from "react-icons/fa";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 export default function Testimonial() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const unique_id = Math.random().toString(36).substring(2, 9);
+  const prevBtnClass = `custom-prev-${unique_id}`;
+  const nextBtnClass = `custom-next-${unique_id}`;
 
   const testimonials = [
     {
@@ -9,64 +17,70 @@ export default function Testimonial() {
         "I like Portfolio Page more and more each day because it makes my life a lot easier. It fits our needs perfectly. Keep up the excellent work.",
       author: "John Smith",
       role: "UI & UX Designer",
-      avatar: "👨‍💼",
+      avatar: <FaUserCircle />,
     },
-     {
+    {
+      quote:
+        "I like Portfolio Page more and more each day because it makes my life a lot easier. It fits our needs perfectly. Keep up the excellent work.",
+      author: "David",
+      role: "Graphic Designer",
+      avatar: <FaUserCircle />,
+    },
+    {
+      quote:
+        "I like Portfolio Page more and more each day because it makes my life a lot easier. It fits our needs perfectly. Keep up the excellent work.",
+      author: "Isaac",
+      role: "Developer",
+      avatar: <FaUserCircle />,
+    },
+    {
       quote:
         "I like Portfolio Page more and more each day because it makes my life a lot easier. It fits our needs perfectly. Keep up the excellent work.",
       author: "John Smith",
       role: "UI & UX Designer",
-      avatar: "👨‍💼",
+      avatar: <FaUserCircle />,
     },
-     {
-      quote:
-        "I like Portfolio Page more and more each day because it makes my life a lot easier. It fits our needs perfectly. Keep up the excellent work.",
-      author: "John Smith",
-      role: "UI & UX Designer",
-      avatar: "👨‍💼",
-    },
-     {
-      quote:
-        "I like Portfolio Page more and more each day because it makes my life a lot easier. It fits our needs perfectly. Keep up the excellent work.",
-      author: "John Smith",
-      role: "UI & UX Designer",
-      avatar: "👨‍💼",
-    },
-  ]
-
-  const current = testimonials[currentIndex]
+  ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white">
-      <div className="text-center space-y-8">
-        <blockquote className="text-3xl sm:text-4xl font-bold text-foreground leading-tight max-w-3xl mx-auto">
-          "{current.quote}"
-        </blockquote>
+    <section className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-2xl relative">
+      <button
+        className={`${prevBtnClass} absolute left-5 sm:left-20 top-[74%] sm:top-[70%] -translate-y-1/2 z-10 group w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black transition`}
+      >
+        <IoIosArrowRoundBack className="text-[1.5rem] text-gray-700 group-hover:text-white" />
+      </button>
+      <button
+        className={`${nextBtnClass} absolute right-5 sm:right-20 top-[74%] sm:top-[70%] -translate-y-1/2 z-10 group w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black transition`}
+      >
+        <IoIosArrowRoundForward className="text-[1.5rem] text-gray-700 group-hover:text-white" />
+      </button>
 
-        <div className="flex items-center justify-center gap-4">
-          <button
-            onClick={() => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-            className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition"
-          >
-            ←
-          </button>
-
-          <div className="flex items-center gap-3">
-            <div className="text-3xl">{current.avatar}</div>
-            <div className="text-left">
-              <p className="font-semibold text-foreground">{current.author}</p>
-              <p className="text-sm text-muted-foreground">{current.role}</p>
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={{
+          nextEl: `.${nextBtnClass}`,
+          prevEl: `.${prevBtnClass}`,
+        }}
+      >
+        {testimonials.map((t, index) => (
+          <SwiperSlide key={index}>
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl">
+              <p className="text-[1.4rem] sm:text-[1.8rem] lg:text-[2rem] font-medium mb-6">“{t.quote}”</p>
+              <div className="flex items-center gap-x-4 my-5">
+                <span className="text-gray-300 text-[3rem]">{t.avatar}</span>
+                <div className="text-start">
+                  <h4 className="font-semibold text-gray-900 text-[1.1rem]">
+                    {t.author}
+                  </h4>
+                  <span className="text-gray-500 text-xs">{t.role}</span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <button
-            onClick={() => setCurrentIndex((prev) => (prev + 1) % testimonials.length)}
-            className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-90 transition"
-          >
-            →
-          </button>
-        </div>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
-  )
+  );
 }

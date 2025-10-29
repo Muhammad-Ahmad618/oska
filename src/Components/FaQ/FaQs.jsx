@@ -1,7 +1,5 @@
 import { useState } from "react";
 import CustomBtn from "../CustomBtn/CustomBtn";
-import { IoMdArrowDropleft } from "react-icons/io";
-import { IoMdArrowDropright } from "react-icons/io";
 
 function FaQs() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -25,10 +23,14 @@ function FaQs() {
     <section className="py-20 px-4 sm:px-6 lg:px-32 mx-auto bg-white rounded-xl">
       <div className="text-center mb-12 space-y-4">
         <div className="flex justify-center mb-10">
-        <img src="/arrowVector.png" alt="image" className="object-cover max-w-[8rem] w-full" />
+          <img
+            src="/arrowVector.png"
+            alt="image"
+            className="object-cover max-w-32 w-full"
+          />
         </div>
         <div className="flex flex-col items-center gap-y-5">
-          <h2 className="text-4xl font-bold text-foreground">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground max-w-sm">

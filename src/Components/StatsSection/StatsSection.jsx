@@ -7,8 +7,8 @@ function StatsSection() {
   ];
 
   return (
-    <section className="flex justify-center items-center py-10 my-5">
-      <div className="bg-white shadow-sm rounded-2xl px-10 py-8 flex flex-col sm:flex-row justify-between items-center gap-8 w-full max-w-6xl">
+    <section className="flex justify-center items-center py-10 my-5 px-5 lg:px-28 2xl:px-48">
+      <div className="bg-white shadow-sm rounded-2xl px-10 py-8 grid grid-cols-2 md:grid-cols-4 justify-items-stretch gap-8 w-full">
         {stats.map((stat, index) => (
           <div key={index} className="text-center">
             <h3 className="text-3xl font-bold text-gray-900">{stat.value}</h3>
